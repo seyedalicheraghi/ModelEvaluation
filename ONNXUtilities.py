@@ -37,8 +37,10 @@ class ONNXSurgery:
         return nodesToIgnore
 
     @staticmethod
-    def branch_generator(modelOnnx, branchName):
+    def branch_generator(modelOnnx, branchName, newName='./ModelWithNewOutputs.onnx'):
         """
+        :param newName:
+        Name of the new model with branch
         :param modelOnnx:
         ONNX model to create output branches.
         :param branchName:
@@ -71,7 +73,7 @@ class ONNXSurgery:
                                                   initializer=values)
         backBoneModel = onnx.helper.make_model(backBoneModelDef, producer_name='ali', opset_imports=opsetImport)
         backBoneModel.ir_version = 7
-        onnx.save(backBoneModel, './ModelWithNewOutputs.onnx')
+        onnx.save(backBoneModel, newName)
 
     def cutting_head(self):
         """
