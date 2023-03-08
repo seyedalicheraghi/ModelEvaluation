@@ -1,0 +1,1 @@
+['Conv', 'LeakyRelu', 'MaxPool', 'Add', 'Clip']
